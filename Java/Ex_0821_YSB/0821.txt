@@ -1,0 +1,87 @@
+자바에서 컬렉션 데이터를 처리할 때 for,for each를 사용하면 컬렉션 내부의 요소들을 하나씩 다루었다.
+크기가 작으면 상관이 없지만 커지면 루프문의 사용은 성능저하를 일으켰다.
+
+
+
+스트림의 등장
+-java8에 추가된 기능으로 컬렉션 데이터를 선언형으로 쉽게 처리할 수 있다.
+-복잡한 루프문을 사용하지 않아도 되며, 루프문을 중첩해서 사용해야 하는 경우도 많이 줄었다.
+
+
+
+스트림
+-'데이터의 흐름'이다.
+-배열 또는 컬렉션 객체에 메서드 여러개를 조합해서 원하는 결과를 필터링하고 가공된 결과를 얻을 수 있다.
+-또한 람다식을 이용해서 코드의 양을 줄이고 간결하게 표현할 수 있다.
+-즉,배열과 컬렉션을 함수형으로 처리할 수 있다.
+
+
+
+스트림의 특징
+-lterator <T> iter = 컬렉션객체.iterator();
+-스트림은 데이터 소스로부터 데이터를 읽기만 할뿐, 데이터 소스를 변경하지 않는다.(원본은 안바뀜)
+
+스트림을 사용하는 방법
+1.생성하기:스트림객체의 생성
+2.가공하기:필터링 및 매핑 등 원하는 결과를 만들어 가는 중간작업
+3.결과만들기: 최종적으로 결과를 만들어 반환하는 작업
+
+
+
+배열을 통한 생성
+Stream <T> stream = Arrays.stream(배열);
+
+컬렉션을 통한 생성
+Stream <T> stream = 컬렉션객체.stream;
+
+
+기본타입형 스트림생성
+-Stream은 제네릭을 갖는데, 기본자료형을 다루려면 오토박싱&언박싱이 발생하여 비효율성이 증가한다.
+-비효율성을 줄이기 위해 데이터 소스의 요소를 기본형으로 다루는 스트림이 제공된다.
+-IntStream, LongStream, DoubleStream
+
+스트림의 연산
+-메서드를 통해 연산을 하는데,메서드의 실행 결과가 다시 스트림이다.
+-체인형태로 이어서 연산을 하는것이 가능하다.
+
+distinct()			중복을 제거
+filter(Predicate<T> predicate))	조건에 안맞는 요소를 제거
+ limit(long maxSize)  		스트림의 일부를 잘라낸다
+skip(long n)			스트림의 일부를 건너뛴다
+peek(Consumer<T> action)	스트림의 요소에 작업 수행
+sorted()			스트림의 요소를 정렬한다.
+sorted(Comparator<T> comparator)
+
+최종연산
+-연산결과가 스트림이 아닌 연산
+-스트림 요소를 소모하므로 한번만 가능
+
+void forEach(Consumer<? super T> action>
+long count() 스트림의 요소의 개수를 반환
+Optional<T> max(Comparator<? super T> comparator) 	최대값 반환
+Optional<T> min(Comparator<? super T> comparator) 	최소값 반환
+Optional<T> findAny() 					스트림의 요소를 하나 반환
+Optional<T> findFirst() 				스트림의 첫번째 요소를 하나 반환
+boolean allMatch(Predicate<T>p)				모두 만족하는지
+anyMatch(Predicate<T> p)				하나라도 만족하는지
+anyMatch(Predicate<T> p)				모두 만족하지 않는지
+Object[] toArray()					스트림의 모든 요소를 배열로 변환
+A[] toArray(IntFunction<A[]> generator)		
+Optional<T> reduce(BinaryOperator<T> accumulator)	스트림 요소를 하나씩 줄여가면서(리듀싱) 계산한다.
+T reduce(T identity, BinaryOperator<T> accumulator)
+R collect(Collector<T,A,B> collector)			스트림의 요소를 수집한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
