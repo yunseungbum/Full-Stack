@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //객체(object)
+        //실생활에서 우리가 인식 할 수 있는 사물로 이해 할 수 있다.
+        //스크립트의 기본타입은 객체이다.
+        //객체란 키와 값으로 구성된 프로퍼티의 정렬되지 않은 집합이다.
+        //프로퍼티의 값으로 함수가 올 수도 있는데, 이 프로퍼티를 메서드라고 한다.
+
+        //객체를 생성하는 법
+        //1.객체 리터럴
+        //자바스크립트에서는 객체를 변수처럼 정의하는 것이 가능하다.
+        //키(key):필드
+        //값(value):원시타입(숫자,문자,논리형,nullundefined),객체,함수
+        // let 객체명 = {
+        //  키1 : 값1
+        // 키2 : 값 2
+        // ...
+        // }
+        let kitty ={
+            name : '나비',
+            family:'코리안 숏헤어',
+            age:1,
+            weight : 0.1
+        }
+        //자바스크립트에서 객체 사용
+        document.write(`우리집 고양이의 이름은 ${kitty.name}이고, ${kitty.family}이다, <br>`)
+    
+        //2.생성자를 이용한 객체의 생성
+        //new 연산자와 Oject생성자 함수를 호출하여 빈 객체를 만들 수 있다.
+        //빈 객체 생성 후 프로퍼티 또는 메서드를 추가하여 객체를 완성하는 방법
+        let Person = new Object();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
