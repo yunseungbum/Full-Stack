@@ -2,10 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지시사항2</title>
+<title>test2</title>
 <style>
-	body { width:960px; }
-	div:first-child { border-bottom:1px solid black; }
+	.page-wrapper {
+		width: 1000px;
+		margin: 0 auto;
+		border: 3px solid black;
+		background-color: silver;
+	}
+	body {  
+		background-color: white;
+		margin: 0;
+		padding: 0;
+	}
+	#img{
+		border-bottom: 1px solid black;
+	}
 	.fl { float:left; }
 	.fr { float:right; }
 	div#div1 { width:80px; padding:5px; border-right:1px solid black; height:400px; }
@@ -13,8 +25,8 @@
 	#btn_menu_search { padding:5px 10px; }
 	
 	#btn_search { padding:5px 20px; background-color: white; border: 1px solid #bfbfbf; color: #bfbfbf; }
-	.btn_view { width:70px; padding:5px 20px; background-color: white; border: 1px solid red; color: red; }
-	.btn_borrow { width:70px; padding:5px 20px; background-color: white; border: 1px solid blue; color: blue; }
+	.btn_view { width:70px; padding:5px 17px; background-color: white; border: 1px solid red; color: red; }
+	.btn_borrow { width:70px; padding:5px 17px; background-color: white; border: 1px solid blue; color: blue; }
 	
 	div#div2 input[type="text"] { width:750px; padding:5px; }
 	table { border-collapse: collapse; table-layout:fixed; }
@@ -24,13 +36,12 @@
 	tr>td:nth-child(2) { width:450px; }
 	tr>td:nth-child(3) { width:100px; }
 	tr>td:nth-child(4) { width:50px; }
-	tr>td:nth-child(5) { width:50px; }
 </style>
 </head>
 <body>
-	<!-- LOGO -->
-	<div>
-		<img style="width:100px;" src="http://koreaisacademy.com/renewal2016/img/mainNew/it_logo_sp.png"/>
+	<div class="page-wrapper">
+	<div id ="img">
+		<img style="width:100px;" src="https://img.sa.nexon.com/trade_renewal/img/item/W/wpw05924.png"/>
 	</div>
 	<!-- Left Menu / Main Content -->
 	<div id="div1" class="fl">
@@ -44,6 +55,8 @@
 			<div class="fr" style="padding:10px; ">
 				정렬방식
 				<select name="select_sort">
+					<option value='' selected>도서명 오름차순</option>
+					<option value='' selected>도서명 내림차순</option>
 					<option value='' selected>선택하세요</option>
 				</select>
 			</div>
@@ -82,6 +95,6 @@
 	</div>
 	<div style="clear:both;"></div>
 	
-
+	</div>
 </body>
 </html>
