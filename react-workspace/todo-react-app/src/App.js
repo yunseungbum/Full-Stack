@@ -31,6 +31,10 @@ const deleteItem =(item) =>{
   setItems([...newItems]);
 }
 
+const editItem =() =>{
+  setItems([...items]);
+}
+
 
 
 
@@ -45,8 +49,8 @@ let todoItems = items.length > 0 && (
     {items.map((item) =>(
       <Todo item={item} 
       key={item.id} 
-      deleteItem={deleteItem}/>
-    ))}
+      deleteItem={deleteItem}
+      editItem={editItem}/>))}
     </List>
   </Paper>
 );

@@ -37,16 +37,46 @@ import DeleteOutlined from '@mui/icons-material/DeleteOutlined';
 
 const Todo  = (props) => {
     const [item, setItem] = useState(props.item);
+    const [readOnly,setReadOnly] = useState(true);
     const deleteItem = props.deleteItem;
+    const editItem = props.editItem;
+
+    const editEventHandler = (e) => {
+        item.title = e.target.value;//변경만 해서 렌더링이 안된다.
+        editItem();                 //없으면 아예 수정아 안됨 -> editItem함수를 호출
+    }
+   
+
+    const turnOffReadOnly =() => {
+       setReadOnly(false);
+    }
+    const turnOnReadOnly =(e) =>{
+        if(e.key === 'Enter'){
+            setReadOnly(true);
+        }
+    };
     const deleteEventHandler = () => {
         deleteItem(item);
     }
+
+    //체크박스변경
+    const CheckboxEventHandler = (e) => {
+        item.done = e.target.checked;
+        editItem();
+    }
+   
     return(
         <ListItem>
-            <Checkbox checked={item.done} />
+            <Checkbox checked={item.done} onChange={CheckboxEventHandler} />
             <ListItemText>
                 <InputBase
-                    inputProps={{ "aria-label": "naked" }}
+                    inputProps={{ 
+                        "aria-label": "naked",
+                        readOnly:readOnly
+                     }}
+                     onClick={turnOffReadOnly}
+                     onKeyDown={turnOnReadOnly}
+                     onChange={editEventHandler}
                     type="text"
                     id={item.id}
                     name={item.id}
