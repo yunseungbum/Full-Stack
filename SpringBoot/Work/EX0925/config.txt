@@ -1,3 +1,2 @@
-car = ex01.SportCar
-truck = ex01.Truck
-engine = ex01.Engine
+car = ex02.SportCar
+engine=ex02.Engine
