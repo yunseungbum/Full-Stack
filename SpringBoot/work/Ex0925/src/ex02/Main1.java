@@ -22,7 +22,7 @@ public class Main1 {
 	static Object getCar(String key) throws Exception{
 		//java.util.Properties클래스
 		//키와 값의 쌍으로 구성된 속성 목록들을 관리할 때 사용
-		//일반적으로 구성 파일이나 속성파이렝서 설정 정보를 읽거나 쓸 때 사용
+		//일반적으로 구성 파일이나 속성파일에서 설정 정보를 읽거나 쓸 때 사용
 		
 		//사용법은 Map과 비슷하다.
 		//Properties는 ( String, String)을 저장한다.
