@@ -39,25 +39,35 @@ public class ProductService {
 					 	.collect(Collectors.toList());
 			 
 		 }
-		 return products.stream().map(ProductDTO:: new ).collect(Collectors.toList());
+		 return products.stream().map(ProductDTO::new ).collect(Collectors.toList());
 	}
 	
-	public List<ProductDTO> updateProduct(ProductEntity entity){
+	public ProductDTO updateProduct(Long id, ProductDTO dto){
 		
-		Optional<ProductEntity> optional = repository.findById(entity.getId());
-		if(optional != null) {
-		optional.ifPresent(ProductEntity -> {
-			ProductEntity.setName(entity.getName());
-			ProductEntity.setDescription(entity.getDescription());
-			ProductEntity.setPrice(entity.getPrice());
-			
-			repository.save(ProductEntity);
-		});
-		}else {
-			return null;
+		//db에서 id에 해당하는 데이터가 있는지 조회
+		Optional<ProductEntity> orginal =  repository.findById(id);
+		
+		//있으면 매개변수로 넘어온 dto에 있는 내용으로 기존의 내용을 갱신
+		if(orginal.isPresent()) {
+			ProductEntity entity = orginal.get();
+			entity.setName(dto.getName());
+			entity.setDescription(dto.getDescription());
+			System.out.println(dto.getPrice());
+			entity.setPrice(dto.getPrice());
+			repository.save(entity);
+			return new ProductDTO(entity);
 		}
-		return repository.findAll().stream().map(ProductDTO :: new).collect(Collectors.toList());
+		return null;
 		
+	}
+	
+	public Boolean deleteProduct(Long id) {
+		Optional<ProductEntity> original =  repository.findById(id);
+		if(original.isPresent()) {
+			repository.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 	
 	

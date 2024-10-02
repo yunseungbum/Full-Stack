@@ -18,10 +18,10 @@ public class ProductDTO {
 	private Double price;
 	
 	public ProductDTO(ProductEntity entity) {
-		this.id = (long) entity.getId();
+		this.id = entity.getId();
 		this.name = entity.getName();
 		this.description = entity.getDescription();
-		this.price = (double) entity.getPrice();
+		this.price = entity.getPrice();
 	}
 	
 	public static ProductEntity toEntity(ProductDTO dto) {

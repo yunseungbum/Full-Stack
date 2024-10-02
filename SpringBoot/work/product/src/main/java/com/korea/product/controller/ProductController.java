@@ -3,7 +3,9 @@ package com.korea.product.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,12 +43,23 @@ public class ProductController {
 	        return ResponseEntity.ok().body(products);
 	    }
 	    
-	    @PutMapping
-	    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO dto){
-	    	ProductEntity entity = ProductDTO.toEntity(dto);
-	    	List<ProductDTO> updateProduct = service.updateProduct(entity);
-	    	return ResponseEntity.ok().body(updateProduct);
+	    @PutMapping("/{id}")
+	    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductDTO dto){
+	    	ProductDTO updateDTO = service.updateProduct(id, dto);
+	    	if(updateDTO != null) {
+	    		return ResponseEntity.ok().body(updateDTO);
+	    	}
+	    	return ResponseEntity.badRequest().body("업데이트오류");
+	    }
+	    
+	    @DeleteMapping("/{id}")
+	    public ResponseEntity<?> deleteProduct(@PathVariable  Long id){
+	    	boolean isDeleted = service.deleteProduct(id);
 	    	
+	    	if(isDeleted) {
+	    		return ResponseEntity.ok("삭제성공");
+	    	}
+	    	return ResponseEntity.ok("삭제 실패" +id);
 	    }
 }
 

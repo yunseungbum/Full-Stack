@@ -32,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 @RestController //이 클래스가 컨트롤러임을 명시하는 어노테이션
 @RequestMapping("todo")
 @RequiredArgsConstructor
+
 public class TodoController {
 	//TodoService 의존성 주입하기
 	//다른 클래스의 있는 메서드를 사용하기 위해 객체를 만들어야한다.
@@ -41,6 +42,7 @@ public class TodoController {
 	//ResponseEntity.ok().body(response)로 반환하기
 	
 	private final Todoservice todoService;
+	
 	
 	
 	
@@ -149,12 +151,12 @@ public class TodoController {
 	public ResponseEntity<?> deleteTodo(@RequestBody TodoDTO dto){
 		
 		try {
-			String temporartUserId = " temporary-user";
+			String temporaryUserId = "temporary-user";
 			//1.엔티티로 변경
 			TodoEntity entity = TodoDTO.toEntity(dto);
 			
 			//2.임시 유저 아이디 설정
-			entity.setUserId(temporartUserId);
+			entity.setUserId(temporaryUserId);
 			
 			//3.서비스를 이용해  entity를 삭제
 			List<TodoEntity> entities = todoService.delete(entity);
