@@ -2,22 +2,27 @@ import logo from './logo.svg';
 import Todo from './Todo'; // Todo 컴포넌트를 import
 //import Count from './Count';
 import React, { useState,useEffect } from 'react';
-import { Container, List, Paper } from "@mui/material";
+import { Container, List, Paper, Grid, Button, AppBar, Toolbar, Typography } from "@mui/material";
 import './App.css';
 import AddTodo from './AddTodo'
-import { call } from './service/ApiService';
+import { call, signout } from './service/ApiService';
 
 //컴포넌트
 //페이지에 렌더링할 React 엘리먼트를 반환하는 작고 재사용 가능한 코드조각
 function App() {
+  //Todo를 가지고 있는 state
   const [items, setItems] = useState([])
-
+  //로딩여부를 가리는 state
+  const [loading, setLoading] = useState(true)
 
   useEffect(() =>{
   //백엔드에게 요청하기
     call("/todo","GET")
-    .then(result => setItems(result.data))
-  },[])
+    .then(result => {setItems(result.data)
+    setLoading(false);
+  })
+    
+  },[]);
 
   //추가
   //전체 데이터를 App.js에서 관리하기 때문에 함수를
@@ -57,16 +62,61 @@ function App() {
   );
   //JSX문법 : 자바스크립트 코드 안에 HTML코드가 들어가는것
   //Babel : JSX로 작성된 자바스크립트를 순수 자바스크립트로 만들어주는 라이브러리
+
+  //NavigationBar 추가
+  let NavigationBar = (
+    <AppBar position = "static">
+      <Toolbar>
+        <Grid justifyContent="space-between" container>
+          <Grid item>
+            <Typography variant='h6'>오늘의 할일</Typography>
+          </Grid>
+          <Grid item>
+            <Button color="inherit" raised onClick={signout}>
+              로그아웃
+            </Button>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+  )
+
+ //로딩중이 아닐 때 렌더링할 화면
+ let todoListPage = (
+      <div className="App">
+        {NavigationBar}
+          <Container maxWidth="md">
+          <AddTodo addItem={addItem} />
+        {/* props를 컴포넌트에 전달하기
+        이름={useState값} */}
+        <div className="TodoList">
+            {todoItems}
+        </div>
+          </Container>
+    </div>
+ )
+
+//로딩중일 때 렌더링 할 부분
+let loadingPage = <h1>로딩중...</h1>
+let content = loadingPage;
+
+//loading : true -> 로딩중
+//loading : false -> 로딩중이 아닌 상태
+
+
+if(!loading){
+  //로딩중이 아니면 todoListPage를 렌더링
+  content = todoListPage;
+}
+
+
   return (
     <div className="App">
-      <Container maxWidth="md">
-        <AddTodo addItem={addItem} />
-        {/* props를 컴포넌트에 전달하기
-      이름={useState값} */}
-        <div className="TodoList">
-          {todoItems}
-        </div>
-      </Container>
+      {content}
+
+
+
+      
     </div>
   );
 }
