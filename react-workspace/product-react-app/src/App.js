@@ -1,9 +1,10 @@
 import logo from './logo.svg';
-import p_info from './p_info';
-import P_info from './p_info';
-import AddProduct from './AddProduct';
+
+import P_info from './Product/p_info';
+import AddProduct from './Product/AddProduct';
 import { call } from './service/ApiService';
-import React, { useState,useEffect } from 'react';
+import React from 'react';
+import { useState,useEffect } from 'react';
 
 function App() {
   
