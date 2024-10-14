@@ -41,7 +41,7 @@ public class OrderService {
 	    public List<ProductDTO> save(OrderDTO dto){
 	    	
 	    	//상품 존재 여부를 확인
-	    	Optional<ProductEntity> option = productRepository.findById(dto.getProductId());
+	    	Optional<ProductEntity> option = productRepository.findById(dto.getProductId()+1);
 	    	ProductEntity productEntity;
 	        if (option.isPresent()) {
 	            productEntity = option.get();

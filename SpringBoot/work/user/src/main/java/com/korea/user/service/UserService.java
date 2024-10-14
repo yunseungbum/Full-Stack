@@ -2,63 +2,84 @@ package com.korea.user.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.user.dto.UserDTO;
 import com.korea.user.model.UserEntity;
-import com.korea.user.persistence.UserRepository;
+import com.korea.user.presistence.UserRepository;
 
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
-@RequiredArgsConstructor //final이 붙은 필드에 대해 생성자를 자동으로 생성
 public class UserService {
 	
-	private final UserRepository repository;
+	@Autowired
+	private UserRepository userRepository;
 	
-	public List<UserDTO> create(UserEntity entity){
-		repository.save(entity);
+	//id중복체크메서드
+	//id를 db로 전달해서 조회가 되면 false, 조회가 안되면 true를 반환
+	//true면 아이디 생성 가능, false면 아이디 생성 불가능
+	public boolean isIdDuplicated(String id) {
+		userRepository.findByUserId(id);
 		
-		return repository.findAll().stream().map(UserDTO::new).collect(Collectors.toList());
+		Optional<UserEntity> user = userRepository.findByUserId(id);
+	
+		return !user.isPresent();//조회가 되면 true이기 때문에 not을 붙힘
 	}
 	
-	public List<UserDTO> getAllUsers(){
+	
+	
+	//회원가입 메서드
+	public List<UserDTO> insert(UserDTO dto){
 		
-		return repository.findAll().stream().map(UserDTO :: new).collect(Collectors.toList());
-	}
-	
-	public UserDTO getUserByEmail(String email) {
-		UserEntity entity = repository.findByEmail(email);
-		return new UserDTO(entity);
-	}
-	
-	public List<UserDTO> updateUser(UserEntity entity){
-		Optional<UserEntity> userEntityOptional = repository.findById(entity.getId());
-		userEntityOptional.ifPresent(UserEntity -> {
-			UserEntity.setName(entity.getName());
-			UserEntity.setEmail(entity.getEmail());
-			
-			repository.save(UserEntity);
-		});
+		UserEntity entity = UserDTO.toEntity(dto);
+		userRepository.save(entity);
 		
-		return getAllUsers();
+		//List<UserEntity> -> List<UserDTO>
+		return userRepository.findAll().stream().map(UserDTO::new).collect(Collectors.toList());
+		
+		
 	}
 	
-	public boolean deleteUser(Long id) {
-		Optional<UserEntity> userEntityOptional = repository.findById(id);
-		if(userEntityOptional.isPresent()) {
-			repository.deleteById(id);
-			return true;
-		}else {
-			return false;
-		}
+	
+	//유저 전체 조회
+	public List<UserDTO> allUsers(){
+		List<UserDTO> list = userRepository.findAll().stream().map(UserDTO::new).collect(Collectors.toList());
+		return list;
 	}
-	 
 	
 	
+	//로그인
+	//아이디랑 비밀번호를 받는다.
+	public UserEntity getByCredetial(String userId, String pwd) {
+		return userRepository.findByUserIdAndPwd(userId,pwd);
+	}
 	
-
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

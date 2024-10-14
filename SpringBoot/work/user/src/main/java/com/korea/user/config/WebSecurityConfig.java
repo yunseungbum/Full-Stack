@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.korea.user.config;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.example.demo.security.JwtAuthenticationFilter;
+import com.korea.user.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -37,7 +37,7 @@ public class WebSecurityConfig {
          
          .authorizeHttpRequests(authorizeRequestsConfigurer -> 
             authorizeRequestsConfigurer
-            .requestMatchers("/", "/auth/**").permitAll()
+            .requestMatchers("/users/**", "/auth/**").permitAll()
             .anyRequest().authenticated()
          );
 

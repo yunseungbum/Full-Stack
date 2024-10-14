@@ -9,28 +9,56 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 	
-	private Long id;
+	private String token;
+	private int idx;
+	private String userId;
+	private String pwd;
 	private String name;
 	private String email;
 	
-	//Entity -> DTO
 	public UserDTO(UserEntity entity) {
-		this.id = entity.getId();
+		this.idx = entity.getIdx();
+		this.userId = entity.getUserId();
+		this.pwd = entity.getPwd();
 		this.name = entity.getName();
 		this.email = entity.getEmail();
 	}
 	
-	//DTO -> Entity
+	
+	//dto -> entity
 	public static UserEntity toEntity(UserDTO dto) {
+		
+		
 		return UserEntity.builder()
-				.id(dto.getId())
-				.name(dto.getName())
-				.email(dto.getEmail())
-				.build();
+							.userId(dto.getUserId())
+							.pwd(dto.getPwd())
+							.name(dto.getName())
+							.email(dto.getEmail())
+							.build();
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

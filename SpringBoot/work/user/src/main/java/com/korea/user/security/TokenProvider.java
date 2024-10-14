@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.korea.user.security;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -9,7 +9,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import com.example.demo.model.UserEntity;
+import com.korea.user.model.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 
 //이 TokenProvider 클래스의 역할은 유저의 정보를 받아서 토큰(JWT)을 생성하기
@@ -47,7 +47,7 @@ public class TokenProvider {
 		//JWT 토큰 생성
 		return Jwts.builder()
 				.signWith(SignatureAlgorithm.HS512,SECRET_KEY)
-				.setSubject(userEntity.getId())
+				.setSubject(userEntity.getUserId())
 				.setIssuer("demo app") //토큰 발행 주체
 				.setIssuedAt(new Date()) //토큰 발행 날짜
 				.setExpiration(expiryDate) // exp

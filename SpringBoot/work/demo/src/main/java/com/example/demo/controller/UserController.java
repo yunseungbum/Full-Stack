@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dto.ResponseDTO;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.model.UserEntity;
-import com.example.demo.security.TokenProvider;
 import com.example.demo.service.UserService;
+import com.korea.user.security.TokenProvider;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -2,13 +2,15 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 import { call } from '../service/ApiService';
 
-function OrderInfo() {
+export default function OrderInfo() {
     //주문내역을 저장할 state
     const [orderList, setOrderList] = useState([]);
 
+    //DB에서 주문내역을 가져오기 위한 hook
     useEffect(() => {
-        call("/orders", "GET")
+        call("/orders/total", "GET")
         .then(result => {
+            //주문내역을 가져와  orderList에 저장
             setOrderList(result.data);
         })
     },[])
@@ -31,7 +33,7 @@ function OrderInfo() {
               <td>{order.productName}</td>
               <td>{order.productPrice}</td>
               <td>{order.productCount}</td>
-              <td>{order.orderPrice}</td>
+              <td>{order.totalPrice}</td>
               <td>{order.orderDate}</td>
             </tr>
           ))}
@@ -40,5 +42,3 @@ function OrderInfo() {
     </div>
   );
 }
-
-export default OrderInfo;

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { API_BASE_URL } from "../api-config";
+import { API_BASE_URL } from "./api-config";
+import Login from '../Users/Login';
 
 //api : 호출할 API의 경로 (예: /todos, /users)
 //method: HTTP 메서드 (예: GET, POST, PUT, DELETE)
@@ -29,15 +30,7 @@ export function call(api, method, request) {
     return axios(options)
         //요청이 성공적으로 처리된 경우 실행되는 코드이다.
         .then(response => {
-            //서버에서 반환된 실제 데이터를 반환하여, 이 데이터를 호출한 쪽에서 사용할 수 있도록 한다.
-            //if(response.status === 200){
                 return response.data;
-            // }else if(response.status === 400){
-            //     window.location.href="/login";
-            // }else{
-            //     Promise.reject(response);
-            //     throw Error(response);
-            // }
         })
         //요청 중에 오류가 발생한 경우 실행되는 코드.
         .catch(error => {
@@ -46,21 +39,18 @@ export function call(api, method, request) {
             if(error.status === 403){
                 window.location.href="/login";
             }
-
-            // const m_error = error;
-            // return m_error;
         });
          
 }//call
 export function signin(userDTO){
-    return call("/auth/signin", "POST", userDTO)
+    return call("/users/signin", "POST", userDTO)
         .then((response) => {
             console.log("response : " + response);
             if(response.token){
                 //로컬 스토리지에 토큰 저장
                 localStorage.setItem("ACCESS_TOKEN",response.token);
                 //token이 존재할 경우 Todo화면으로 리다이렉트
-                window.location.href="/";
+                window.location.href="/main";
             }else{
                 window.location.href="/login";
             }
@@ -75,5 +65,5 @@ export  function signout(){
 }
 
 export function signup(userDTO){
-    return call("/auth/signup","POST",userDTO)
+    return call("/users/signup","POST",userDTO)
 }
