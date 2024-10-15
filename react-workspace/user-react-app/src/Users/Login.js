@@ -15,12 +15,14 @@ const Login = () => {
         signin({userId : userId, pwd : pwd});
     }
 
+    function toSignup(){
+        window.location.href="/signup"
+    }
+
     return(
         <form noValidate onSubmit={handlesubmit}>
         <table border="1" align="center">
-            <thead>
             <caption>:::로그인:::</caption>
-            </thead>
             <tbody>
             <tr>
                 <th>아이디</th>
@@ -33,7 +35,7 @@ const Login = () => {
             <tr>
                 <td colSpan="2" align="center">
                     <input type="submit" value="로그인"/>
-                    <input type="button" value="회원가입"/>
+                    <input type="button" value="회원가입" onClick={toSignup}/>
                 </td>
             </tr>
             </tbody>

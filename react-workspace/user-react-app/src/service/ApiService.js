@@ -2,6 +2,7 @@ import axios from 'axios';
 import { API_BASE_URL } from "./api-config";
 import Login from '../Users/Login';
 
+
 //api : 호출할 API의 경로 (예: /todos, /users)
 //method: HTTP 메서드 (예: GET, POST, PUT, DELETE)
 //request: 요청에 담을 데이터(주로 POST, PUT 요청에서 사용)
@@ -31,7 +32,7 @@ export function call(api, method, request) {
         //요청이 성공적으로 처리된 경우 실행되는 코드이다.
         .then(response => {
                 return response.data;
-        })
+        }) 
         //요청 중에 오류가 발생한 경우 실행되는 코드.
         .catch(error => {
             //에러가 발생하면, 이를 console.log로 출력하여 디버깅하거나 문제를 파악할 수 있도록 한다.
@@ -61,7 +62,7 @@ export function signin(userDTO){
 export  function signout(){
     //로컬스토리지의 값을 null로 만든다.
     localStorage.setItem("ACCESS_TOKEN",null);
-    window.location.href="/login"
+    window.location.href="/"
 }
 
 export function signup(userDTO){
