@@ -1,5 +1,6 @@
 package com.korea.user.service;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -73,15 +74,25 @@ public class UserService {
 
 	}//getUserName end
 	
-	public UserEntity userModifgy(String userId) {
-		Optional<UserEntity> option = userRepository.findByUserId(userId);
-		
+	public void modify(UserDTO dto) {
+	
+		//1.원본을 db에서 꺼내온다.
+		//Optional : 값이 있거나 없음을 명시적으로 표현 할 수 있게 해주는 클래스
+		Optional<UserEntity> option = userRepository.findByUserId(dto.getUserId());
 		if(option.isPresent()) {
 			UserEntity entity = option.get();
-			return entity; 
-		}else {
-			return null;	
-	}
+			
+			//2.내가 가져온 내용으로 객체를 setting을 한다.
+			entity.setUserId(dto.getUserId());
+			entity.setPwd(dto.getPwd());
+			entity.setName(dto.getName());
+			entity.setEmail(dto.getEmail());
+			
+			//3.수정한 내용을 db에 저장한다.
+			userRepository.save(entity);
+			
+			
+		}//if end
 	}//userModify end
 	
 	
