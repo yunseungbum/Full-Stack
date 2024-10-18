@@ -49,12 +49,16 @@ public class WebSecurityConfig {
    @Bean
    public CorsConfigurationSource corsConfigurationSource() {
       CorsConfiguration configuration = new CorsConfiguration();
-      configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000",
-    		  "http://react-developer-env.eba-792ushvb.ap-northeast-2.elasticbeanstalk.com/"));
+      //React 애플리케이션이 실행되는 출처에서 오는 요청을 허용
+      configuration.setAllowedOrigins(Arrays.asList("http://react-developer-env.eba-792ushvb.ap-northeast-2.elasticbeanstalk.com/"));
+      //HTTP메서드 허용
       configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+      //모든 헤더를 허용
       configuration.setAllowedHeaders(Arrays.asList("*"));
+      //쿠키나 인증 정보를 포함한 요청을 허용
       configuration.setAllowCredentials(true);
       
+      //모든 경로에 대해 CORS설정을 적용
       UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
       source.registerCorsConfiguration("/**", configuration);
       return source;
