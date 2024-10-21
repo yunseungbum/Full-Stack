@@ -2,10 +2,9 @@ import React from "react";
 import "./index.css";
 import App from "./App";
 import Login from "./Login";
-import Signup from "./Signup";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {Typography,Box} from "@mui/material";
-import { signup } from "./service/ApiService";
+import Signup from './Signup';
 
 function Copyright(){
     return(
@@ -23,8 +22,8 @@ function AppRouter(){
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<App />}/>
-                    <Route path="login" element={<Login />}/>
-                    <Route path="/signup" element ={<Signup />}/>
+                    <Route path="/login" element={<Login />}/>
+                    <Route path="/Signup" element={<Signup />}/>
                 </Routes>
             </BrowserRouter>
             <Box mt={5}>

@@ -26,7 +26,7 @@ function Login() {
             </Grid>
             {/* 폼을 제출하면 handleSubmit 함수가 실행됨 */}
             <form noValidate onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} marginTop="0.5px">
                     {/* 이메일 입력 필드 */}
                     <Grid item xs={12}>
                         <TextField
@@ -63,9 +63,11 @@ function Login() {
                             로그인
                         </Button>
                     </Grid>
-                    <Grid item>
-                        <Link to ="/signup" variant="body2">
-                        계정이 없습니까?
+                </Grid>
+                <Grid container justifyContent="center">
+                    <Grid item marginTop="5px" >
+                        <Link to="/Signup" variant="body2" >
+                            회원가입하기
                         </Link>
                     </Grid>
                 </Grid>
