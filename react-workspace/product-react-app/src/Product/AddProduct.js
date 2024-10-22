@@ -4,9 +4,9 @@ import { useState} from 'react';
 export default function AddProduct(props){
 
     //상품의 정보를 저장할 수 있는 state
-    const [product, setProduct] = useState({name : "",stock:0,price:0});
+    const [product, setProduct] = useState({name : "",inventory:0,price:0});
 
-    const {name,stock,price} = product;
+    const {name,inventory,price} = product;
 
     let addItem = props.addItem;
     
@@ -27,17 +27,17 @@ export default function AddProduct(props){
 
     // 입력 필드 초기화 함수
     const resetFields = () => {
-        setProduct({ name: "", stock: 0, price: 0 });
+        setProduct({ name: "", inventory: 0, price: 0 });
     };
 
 
     return(
         <div className="register-wrap" style={{width:'500px'}}>
-         <div><input style={{width: '98%'}} value={name} onChange={onChange} name='name' placeholder='상품 이름'/></div>
-         <div><input style={{width: '98%'}} value={stock} onChange={onChange} name='stock' placeholder='상품 재고'/></div>
-         <div><input style={{width: '98%'}} value={price} onChange={onChange} name='price' placeholder='상품 가격'/></div>
-         <input type="button" value="등록" onClick={onButtonClick} style={{width:'100%'}} />
-      </div>
+			<div><input style={{width: '98%'}} value={name} onChange={onChange} name='name' placeholder='상품 이름'/></div>
+			<div><input style={{width: '98%'}} value={inventory} onChange={onChange} name='inventory' placeholder='상품 재고'/></div>
+			<div><input style={{width: '98%'}} value={price} onChange={onChange} name='price' placeholder='상품 가격'/></div>
+			<input type="button" value="등록" onClick={onButtonClick} style={{width:'100%'}} />
+		</div>
     )
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import '../css/p_info.css'
+import '../css/styles.css'
 import { call } from '../service/ApiService';
 import AddProduct from './AddProduct';
-import OrderInfo from './order_info'
+import OrderInfo from '../order/order_info';
 
 
 export default function P_info(){
@@ -85,10 +85,10 @@ export default function P_info(){
                         readOnly={selectedIndex !== index + 1} /></td>
                         <td>{item.id}</td>
                         <td>{item.name}</td>
-                        <td>{item.stock}</td>
+                        <td>{item.inventory}</td>
                         <td>{item.price}</td>
-                        <td>{item.registerDate}</td>
-                        <td>{item.updateDate}</td>
+                        <td>{item.adddate}</td>
+                        <td>{item.editdate}</td>
                     </tr>
                 ))}
                 </tbody>
@@ -98,10 +98,10 @@ export default function P_info(){
         </div>
     );
     //버튼
-    let addProductButton = <button type="button" onClick={onButtonClick}>상품추가</button>
+    let addProductbtn = <button type="button" onClick={onButtonClick}>상품추가</button>
     //추가창
     let addProductScreen = <AddProduct addItem={addItem} setOpen={setOpen} />;
-    let addButton = addProductButton;
+    let addButton = addProductbtn;
 
     //open이 false가 되면 상품추가 창을 연다.
     if(!open){

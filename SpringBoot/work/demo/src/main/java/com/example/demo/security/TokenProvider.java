@@ -3,6 +3,9 @@ package com.example.demo.security;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -22,6 +25,8 @@ public class TokenProvider {
 	
 	//토큰을 생성하는 create 메서드
 	public String create(UserEntity userEntity) {
+
+		
 		
 		//토큰의 유효날짜를 1일로 정함
 		//기한 지금(Instant.now())으로부터 1일(plus(1,ChronoUnit.DAYS))로 설정
@@ -55,7 +60,29 @@ public class TokenProvider {
 				
 		
 	}
-	//토큰을 받아서 검증을 하는 메서드
+	
+	//토큰을 생성하는 create 메서드
+	//Authentication
+	//어플리케이션 내에서 사용자가 누구인지와 그 사용자가 권한을 가졌는지 여부를 나타내는 객체
+	//Principal: 사용자를 나타내는 정보
+	public String create(Authentication authentication) {
+		//OAuth2.0 인증을 통해 로그인한 사람의 정보를 나타낸다.
+		ApplicationOAuth2User userPrincipal = (ApplicationOAuth2User)authentication.getPrincipal();
+		
+		Date expiryDate = Date.from(Instant.now().plus(1,ChronoUnit.DAYS));
+
+		return Jwts.builder()
+				.signWith(SignatureAlgorithm.HS512,SECRET_KEY)
+				.setSubject(userPrincipal.getName())//id가 반환됨
+				.setIssuer("demo app")
+				.setIssuedAt(new Date())
+				.setExpiration(expiryDate)
+				.compact();
+				
+		
+	}
+	
+	
 	public String validateAndeGetUserId(String token) {
 		Claims claims = Jwts.parser()
 				//토큰을 생성할 때 사용했던 서명키
