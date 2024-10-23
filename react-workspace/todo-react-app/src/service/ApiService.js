@@ -44,6 +44,7 @@ export function call(api, method, request) {
         .catch(error => {
             //에러가 발생하면, 이를 console.log로 출력하여 디버깅하거나 문제를 파악할 수 있도록 한다.
             console.log("http error")
+            console.log('error : ',error.status)
             if(error.status === 403){
                 window.location.href="/login";
             }
@@ -77,4 +78,8 @@ export function signout(){
 // 회원 생성
 export function signup(userDTO){
     return call("/auth/signup","POST",userDTO);
+}
+
+export function socialLogin(provider){
+    window.location.href=API_BASE_URL + "/auth/authorize/"+provider+"?redirect_url="+window.location.origin;
 }

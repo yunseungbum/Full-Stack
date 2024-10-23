@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, Typography, TextField, Button } from "@mui/material"; // Material UI 컴포넌트들
-import { signin } from "./service/ApiService"; // 로그인 API 호출 함수
+import { signin, socialLogin } from "./service/ApiService"; // 로그인 API 호출 함수
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -15,6 +15,11 @@ function Login() {
         // ApiService의 signin 메서드를 사용해 로그인 요청을 서버에 보냄
         signin({ username: username, password: password });
     };
+
+    const handleSocialLogin = (provider) => {
+       socialLogin(provider);
+    }
+
     return (
         <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
             <Grid container spacing={2}>
@@ -63,6 +68,14 @@ function Login() {
                             로그인
                         </Button>
                     </Grid>
+                    <Grid item xs={12}>
+                        <Button onClick={ () => {handleSocialLogin("github")}}
+                            fullWidth
+                            variant="contained"
+                           style={{background: '#000'}}
+                        >깃허브 로그인하기</Button>
+                    </Grid>
+            
                 </Grid>
                 <Grid container justifyContent="center">
                     <Grid item marginTop="5px" >

@@ -11,7 +11,7 @@ let backendHost;
 const hostname = window && window.location &&window.location.hostname;
 
 if(hostname == "localhost"){
-    backendHost = "http:locathost:5000"
+    backendHost = "http://localhost:5000"
     
 }else{
     backendHost = "https://api.bum-test.shop";

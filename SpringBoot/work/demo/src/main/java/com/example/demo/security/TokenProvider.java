@@ -34,21 +34,7 @@ public class TokenProvider {
 		//Instant.now() : 현재 기준의 시간을 날짜와 시간을 초 단위로 표현
 		//plus(1,ChronoUnit.DAYS) : Instant 객체에 하루를 더하는 동작
 		Date expiryDate = Date.from(Instant.now().plus(1,ChronoUnit.DAYS));
-		
-		/*
-		 *{//header
-		 * "alg" : "HS512"
-		 * }.{//payload
-		 * "sub" : "~~~~~",
-		 * "iss" : "demp app",
-		 * "iat" : ~~~~~~,
-		 * "exp" : ~~~~~~
-		 * }.
-		 * */
-		//SECRET_KEY 를 이용해 서명한 부분
-		//XXXXXXXXXXXXXXXX
-//		return null;
-		
+
 		//JWT 토큰 생성
 		return Jwts.builder()
 				.signWith(SignatureAlgorithm.HS512,SECRET_KEY)
