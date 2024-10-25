@@ -29,6 +29,14 @@ function MultiButtons(){
                 navigate('/newsSearch');
                 break;
 
+            case 'map':
+                navigate('/map');
+                break;
+
+                case 'map2':
+                navigate('/map2');
+                break;
+
         }
     }
 
@@ -42,6 +50,12 @@ function MultiButtons(){
             </button>
             <button id="newsSearch" onClick={handleButtonClick}>
                 뉴스 검색 api
+            </button>
+            <button id="map" onClick={handleButtonClick}>
+                카카오 지도 api
+            </button>
+            <button id="map2" onClick={handleButtonClick}>
+                카카오 지도2 api
             </button>
         </div>
     );
