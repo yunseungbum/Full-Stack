@@ -33,9 +33,13 @@ function MultiButtons(){
                 navigate('/map');
                 break;
 
-                case 'map2':
+            case 'map2':
                 navigate('/map2');
                 break;
+            case 'map3':
+                navigate('/map3');
+                break;
+
 
         }
     }
@@ -56,6 +60,9 @@ function MultiButtons(){
             </button>
             <button id="map2" onClick={handleButtonClick}>
                 카카오 지도2 api
+            </button>
+            <button id="map3" onClick={handleButtonClick}>
+                주소+지도
             </button>
         </div>
     );

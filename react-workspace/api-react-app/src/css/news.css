@@ -1,23 +1,17 @@
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4; /* 부드러운 배경색 */
-}
-
-.container {
+/* News.css */
+.news-container {
     max-width: 800px;
-    margin: 50px auto; /* 상단 여백 */
+    margin: 20px auto;
     padding: 20px;
-    background: white;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
     color: #333;
-    font-size: 2.5em;
-    margin-bottom: 20px;
 }
 
 form {
@@ -28,64 +22,58 @@ form {
 
 input[type='text'] {
     padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     width: 70%;
-    font-size: 16px;
     margin-right: 10px;
-    transition: border-color 0.3s;
-}
-
-input[type='text']:focus {
-    border-color: #0056b3; /* 포커스 시 색상 변경 */
-    outline: none; /* 기본 아웃라인 제거 */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3; /* 호버 시 색상 변경 */
+    background-color: #0056b3;
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 li {
-    background: #e9ecef; /* 부드러운 회색 배경 */
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
 }
 
-li p {
+li:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
     margin: 5px 0;
 }
 
 a {
-    display: inline-block;
-    margin-top: 10px;
     color: #007bff;
     text-decoration: none;
-    font-weight: bold;
 }
 
 a:hover {
-    text-decoration: underline; /* 호버 시 밑줄 추가 */
+    text-decoration: underline;
 }
 
-p {
+.error {
+    color: red;
     text-align: center;
-    font-weight: bold;
 }

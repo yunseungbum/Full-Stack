@@ -18,6 +18,8 @@ function MyMap2(){
     //검색어를 저장할 상태
     const[keyword, setKeyword] =useState('');
 
+    
+
     //카카오 장소 검색 API를 호출하는 함수
   const searchPlaces = (searchKeyword) => {
     // map 객체와 카카오 지도 API가 로드되지 않았으면 함수 종료
@@ -78,7 +80,7 @@ function MyMap2(){
                     onChange={(e) => setKeyword(e.target.value)}
                     placeholder="검색어를 입력하세요"
                     style={{ padding: "5px", marginRight: "5px" }} />
-                <button onClick={handleSearch}>검색</button>
+                <button onMouseOver={handleSearch}>검색</button>
             </div>
             {/* 지도 표시 */}
             <Map
