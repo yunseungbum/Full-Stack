@@ -1,0 +1,130 @@
+컴포넌트 - > 하나의 화면을 갖는 함수(UI의 모음)
+View - > 리엑트에서 <div>랑 비슷
+Text - > 리엑트에서 <p>
+
+컴포넌트를 호출할 때 속성명 = 문자열,숫자 {변수,객체,함수}형태로 전달
+
+<Comp title ='제목'/>
+해당 함수에서 매개변수에 할당된다.
+
+const Comp = (props) => {
+	console.log(props) -> {"title" : "제목","key":"value",...}
+
+
+}
+
+state를 사용하는 이유
+1.UI업데이트의 자동화
+-state가 변경될 때마다 재렌더링을 해서 개발자가 직접 dom을 조작할 필요가 없다.
+
+2.컴포넌트와 데이터의 일관성 유지
+-고유한 state를 통해 자신만의 데이터를 독립적으로 관리할 수 있다.
+
+3.비동기 데이터와 상태 변화 처리
+-setter함수는 비동기로 작동한다.
+-연속적으로 setter함수를 호출할 경우 예상치 못한 결과가 나올 수 있다.
+-이전 상태를 기준으로 다음상태를 설정할 때는 콜백함수를 이용하는 것이 좋다.
+
+------------------------------------------------------------------------------------------------------------------------
+스타일링
+: JSX의 문법에 대해 알아보면서 간단하게 살펴봤듯이 background-color처럼 하이픈으로 된 CSS와 달리 backgroundColor처럼 카멜 표기법으로 작성해야 한다.
+
+클래스 스타일링
+: 스타일시트에 정의된 스타일을 사용하는 방법이다.
+
+StyleSheet
+: React Native의 내장 객체로, 화면에 표시될 요소들의 디자인(예: 배경색, 글꼴 크기, 여백)을 지정하는 역할을 한다.
+
+
+자바스크립트 객체
+객체리터럴
+ const person = {key:value,key:value...}
+: key -> 프로퍼티
+: value -> 프로퍼티 값
+
+프로퍼티 값에 들어 갈 수 있는 타입
+문자열,숫자(정수,실수),boolean,null,객체,배열,함수(객체 안에 정의된 함수를 메서드)
+
+ex) const user ={
+	name:"Alice",
+	age:30,
+	isMarried:true,
+	address:null,
+	contact:{email:"alice@eaxmple.com",phone:"123-456-789"},
+	hobbies:["reading","sports"],
+	greet(){
+	 	console.log();
+	}
+
+justifyContent
+컴포넌트의 정렬
+
+alignItems
+flexDirect에서 정한 방향과 수직이 되는 방향을 정렬 할 때 사용
+
+주 축을 결정하는 flexDirection
+주 축에서 item을 정렬하는 justfyContent
+주 축의 수직에서 item을 정렬하는 alignItems
+
+그림자
+shadowColor: 그림자 색 설정
+shadowOffset: width와 height값을 지정하여 그림자 거리 설정
+shadowOpacity: 그림자의 불투명도 설정
+shadowRadius: 그림자의 흐름 반경 설정
+
+위 속성들은 ios에만 적용되는 속성
+
+리엑트 네이티브에서 제공하는 Platform이라는 모듈을 각 플랫폼마다 다른 코드가 적용되도록 코드를 작성할 수 있다.
+
+스타일드 컴포넌트
+웹의 CSS와는 속성 이름이 다르거나, 타입이 다르거나, 단위를 생략하거나 하는 등의 차이 때문에 불편하게 느끼는 경우가 있다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

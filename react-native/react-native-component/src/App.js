@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { Fragment } from 'react';
-import { StyleSheet, Text, View ,Button} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import MyButton from './components/MyComponent';
 import Counter from './components/Counter';
 import ToggleText from './components/Toggle';
 import Total from './components/Total';
 import ItemList from './components/ItemList';
 import EventButton from './components/EventButton';
-import EventInput from './components/EventInPut';
+import EventInput from './components/EventInput';
+import  Button  from './components/PressAbleTest';
+
 
 export default function App() {
 
@@ -19,13 +21,13 @@ export default function App() {
   
 
       //if 조건문
-        {/*
-          {(()=>{
-          if(name ==='Hanbit') return 'My name is Hanbit';
-          else if(name === 'Gil-Dong') return 'My name is Gil-Dong';
-          else return 'My name is React Native';
-        })()}
-          */}
+        
+        //   {(()=>{
+        //   if(name ==='Hanbit') return 'My name is Hanbit';
+        //   else if(name === 'Gil-Dong') return 'My name is Gil-Dong';
+        //   else return 'My name is React Native';
+        // })()}
+          
 
 
        //삼항연산자
@@ -34,6 +36,9 @@ export default function App() {
         if(name ==='Hanbit') return 'My name is Hanbit';
         else if(name === 'Gil-Dong') return 'My name is Gil-Dong';
         else return 'My name is React Native';
+
+
+
         })()} 
         */}
 
@@ -43,7 +48,7 @@ export default function App() {
          {name === 'Gil-Dong' &&(
         <Text style={styles.text}> My name is Gil-Dong</Text>
       )}
-      {name !== 'Gil-Dong' &&(
+      {name !== 'Gil-Dong' ||(
         <Text style={styles.text}> My name is not Gil-Dong</Text>
       )}
         */}
@@ -83,8 +88,9 @@ export default function App() {
             <ToggleText/>
             <Total sum={arr}/>
             <ItemList fruits = {fruits}/> */}
-            <EventButton />
-            <EventInput />
+            {/* <EventButton />
+            <EventInput /> */}
+            <Button title='pressable'/>
           
     </View>
 )
