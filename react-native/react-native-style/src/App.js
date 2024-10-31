@@ -10,17 +10,41 @@ import { StyledComponent } from './Components/StyledComponent';
 import Button from './Components/Button';
 import styled from 'styled-components';
 import {Signup,Headers,LoginCheck} from './Components/Signup';
+import Input from './Components/Input';
+import { ThemeProvider } from 'styled-components/native';
+import { theme,lightTheme, darkTheme  } from './Components/Theme';
+import { Switch } from 'react-native';
 
 const Container = styled.View`
-  flex:1;
-  background-color: #ffffff;
+  flex: 1;
+  background-color: ${props => props.theme.background};
   align-items: center;
-  justify-content:center;
-`
+  justify-content: center;
+`;
 
 const App = () => {
+  const [isDark, setIsDark] = useState(false);
+  const _toggleSwitch = () => setIsDark(!isDark);
+
   return (
-    <View style={viewStyles.container}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <Container>
+        <Switch value={isDark} onValueChange={_toggleSwitch} />
+        <Button title="Hanbit" />
+        <Button title="React Native" />
+        <Input borderColor="#3498db" />
+        <Input borderColor="#9b59b6" />
+      </Container>
+    </ThemeProvider>
+  );
+};
+
+export default App;
+
+
+
+
+// <View style={viewStyles.container}>
       {/* <Text style={[textStyles.text, { color: 'green' }]}>
         Inline Styling - Text
       </Text>
@@ -40,13 +64,10 @@ const App = () => {
       <Button title='jonna hard'/>
       </Container>  */}
       
+      
+      {/* 회원가입 시스템 만들기
       <Headers/>
       <Signup/>
-      <LoginCheck/>
-      
-      
-    </View>
-  );
-};
+      <LoginCheck/> */}
 
-export default App;
+       // </View>
