@@ -71,8 +71,13 @@ export default function App(){
   };
 
   const _deleteTask = id => {
+    //tasks를 복사하여 새로운 객체를 만든다.
     const currentTasks = Object.assign({}, tasks);
+
+    //currentTask객체에서 특정 작업을 삭제
     delete currentTasks[id];
+
+    //업데이트된 객체를 설정하여 state에 삭제된 작업을 반영을 한다.
     _saveTasks(currentTasks);
   }
 
