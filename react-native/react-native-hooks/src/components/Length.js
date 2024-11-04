@@ -12,7 +12,7 @@ const list = ['JavaScript','Expo','Expo','React Native']
 let idx = 0;
 const Length = () => {
     const [text,setText] = useState(list[0]);
-    //const[length,setLength] = useState(list[0].length);
+    const[length,setLength] = useState(list[0].length);
 
     const getLength = text => {
         console.log(`Target Text: ${text}`);
@@ -23,14 +23,19 @@ const Length = () => {
         setLength(getLength(text));
         ++idx;
         if(idx < list.length) setText(list[idx]);
+        if(idx === list.length) idx = 0;
     }
 
-    const length = useMemo(()=>getLength(text),[text]);
+    //useMemo의 역할
+    // 특정 값이 변경될 때만 계산된 결과를 재사용할 수 있도록 한다.
+    //const length = useMemo(()=>getLength(text),[text]);
 
     return(
         <>
             <StyledText>Text: {text}</StyledText>
             <StyledText>Length: {length}</StyledText>
+
+            {/* button 컴포넌트에서 title,onPress를 props로 전달하기에 선언 */}
             <Button title="get Length" onPress={_onPress}/>
         </>
     )
