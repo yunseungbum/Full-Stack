@@ -19,12 +19,12 @@ export const useFetch = url => {
                     setData(result);
                     setError(null);
                 }else{
-                    throw result;
+                    throw result;//응답이 성공적이지 않으면 에러를 발생시킨다.
                 }
                } catch (error) {
-                setError(error);
+                setError(error);//오류가 발생하면 그 오류를 상태로 저장한다.
                }finally{
-                setInProgress(false);
+                setInProgress(false);//요청이 끝나면 진행 상태를 false로 설정한다.
                }
         }//fetchData end
 
