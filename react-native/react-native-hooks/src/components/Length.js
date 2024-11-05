@@ -23,7 +23,7 @@ const Length = () => {
         setLength(getLength(text));
         ++idx;
         if(idx < list.length) setText(list[idx]);
-        if(idx === list.length) idx = 0;
+        
     }
 
     //useMemo의 역할
