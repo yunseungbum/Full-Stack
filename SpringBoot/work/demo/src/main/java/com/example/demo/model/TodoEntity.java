@@ -32,8 +32,6 @@ import lombok.NoArgsConstructor;
 public class TodoEntity {
 	
 	@Id//기본키가 될 필드에 지정한다
-	
-	//ID를 자동으로 생성하겠다.
 	//generator : 어떻게 ID를 생성할지 지정하는 변수
 	//@GenericGenerator : 나만의 제너레이터를 사용하고 싶을때 이용하는 어노테이션
 	@GeneratedValue(generator="system-uuid")

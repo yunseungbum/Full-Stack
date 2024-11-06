@@ -6,6 +6,7 @@ import Form from './components/Form'
 import Length from './components/Length'
 import Dog from './components/Dog'
 import MakeBread from './components/MakeBread'
+import ScrollComponent from './components/ScrollComponent'
 
 
 const Container = styled.View`
@@ -42,8 +43,11 @@ const App = () => {
         <Length/> */}
 
 
-          <Dog/> 
+          {/* <Dog/>  */}
          {/* <MakeBread/> */}
+
+
+         <ScrollComponent/>
     </Container>
     
     )
