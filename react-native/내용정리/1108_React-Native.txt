@@ -1,0 +1,92 @@
+Stack 네이게이션
+화면을 쌓아가면서 이동하는 방식
+
+1. 화면을 구성할 컴포넌트를 만든다.
+
+2.Navigation을 만들고 Screen 컴포넌트를 만든다.
+
+3.각각의 Screen 컴포넌트에 우리가 만든 화면 컴포넌트를 할당한다.
+
+4.NavigationContainer 컴포넌트로 Navigation 컴포넌트를 감싼다.
+
+--------------------------------------------------------------------------------
+
+1.UserStack 만들기
+
+2.UserHomeScreen에서 유저목록보기 버튼 누르면 유저 목록이 나오는 페이지로 이동
+
+3.UserListScreen 유저목록에서 유저이름 (프로필보기)버튼으로 표시
+프로필보기 버튼을 누르면 상세페이지로 이동
+
+4.UserProfileSCreen
+유저의 이름과 이메일 화면에 띄우기
+
+
+
+
+Tab 네비게이터를 이용한 쇼핑앱 만들기
+
+1.화면 구성
+HomeScreen: 홈화면으로 "Welcome to ShopApp" 라는 텍스트 표시
+CartScreen: 장바구니 화면으로 "Your Cart is Empty" 라는 텍스트 표시
+ProfileScreen: 사용자 프로필 화면으로 "your Profile" 이라는 텍스트 표시
+
+탭 아이콘
+HomeScreen -> home
+CartScreen -> cart
+ProfileScreen -> person
+아이콘 크기는 24로 설정
+탭 색상
+선택된 탭 색상은 blue,선택되지 않은 탭의 색상은 gray
+
+CartScreen 버튼을 추가하여 "Addltem"을 클릭하면 장바구니에 아이템이 추가되었다는 메시지 표시
+
+
+
+
+
+스택+ 탭 네이게이션 사용해보기
+
+1. 탭 네비게이션
+친구,채팅,설정을 사용한다.
+
+2. 스택 네비게이션은 
+ChatListScreen : 버튼 하나 만들어서 들어가기
+ChatDetailScreen : 채팅창
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
