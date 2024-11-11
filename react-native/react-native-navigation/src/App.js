@@ -7,6 +7,7 @@ import UserStackNavigation from "./navigations/UserStack";
 import ShopTabNavitaion from "./navigations/ShopTab";
 import ChatStackNavigaion from "./navigations/StackChat";
 import ChatTabNavigation from "./navigations/TabChat";
+import DrawerNavigation from "./navigations/Drawer";
 
 
 
@@ -18,7 +19,11 @@ const App = () => {
         {/* <UserStackNavigation/> */}
         {/* <TabNavigation/>*/}
         {/* <ShopTabNavitaion/> */}
-        <ChatTabNavigation/>
+        
+        {/* <ChatTabNavigation/> */}
+
+
+        <DrawerNavigation/>
     </NavigationContainer>
     
 
