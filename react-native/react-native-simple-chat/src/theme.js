@@ -1,3 +1,5 @@
+import { ImageBackground } from "react-native";
+
 const colors = {
     white : '#ffffff',
     black : '#000000',
@@ -10,4 +12,10 @@ const colors = {
 export const theme = {
     background : colors.white,
     text : colors.black,
+    imageBackground: colors.grey_0,
+    label : colors.grey_1,
+    inputPlaceholder : colors.grey_1,
+    imputBorder : colors.grey_1,
+    errorText : colors.red,
+
 }

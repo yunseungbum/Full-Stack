@@ -5,7 +5,9 @@ import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'; // expo-splash-screen을 불러옴
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from './theme';
-
+import Navigation from './navigations';
+import { images } from './utils/images';
+import { object } from 'prop-types';
 
 //스플래시 화면이 자동으로 숨겨지지 않도록 설정하여 초기화 작업이 완료될때까지 유지
 SplashScreen.preventAutoHideAsync();
@@ -13,7 +15,10 @@ const cacheImages = images => {
     // 이미지 캐싱 함수: 문자열로 전달된 URL 이미지와 로컬 파일 이미지에 따라 각각 적절한 캐싱 방식으로 처리
     return images.map(image => {
         if (typeof image === 'string') {
-            return Image.prefetch(image); // URL로 제공된 이미지의 경우, Image.prefetch로 캐싱
+            //Image.prefetch(image);
+            // 이미지가 앱에서 필요할 때 로딩을 빠르게 하기 위해 미리 다운로드하고 캐시에 저장하는 함수
+             // URL로 제공된 이미지의 경우, Image.prefetch로 캐싱
+            return Image.prefetch(image);
         } else {
             return Asset.fromModule(image).downloadAsync(); // 로컬 파일의 경우, expo-asset에서 제공하는 다운로드 방식으로 캐싱
         }
@@ -46,7 +51,10 @@ const App = () => {
 
     const _loadAssets = async () => {
         // 이미지와 폰트를 캐싱하여 리소스를 로드
-        const imageAssets = cacheImages([require('../assets/splash.png')]); // 로컬 스플래시 이미지 캐싱
+        const imageAssets = cacheImages([
+            require('../assets/splash.png'),
+            ...object.values(images),
+        ]); // 로컬 스플래시 이미지 캐싱
         const fontAssets = cacheFonts([]); // 추가적인 폰트가 있다면 이 배열에 추가 가능
 
         await Promise.all([...imageAssets, ...fontAssets]); // 모든 비동기 작업이 완료될 때까지 기다림
@@ -59,9 +67,12 @@ const App = () => {
 
 
     return(
+
         <ThemeProvider theme={theme}>
             <StatusBar barStyle='dark-content' />
+            <Navigation/>
         </ThemeProvider>
+
     )
 }
 
