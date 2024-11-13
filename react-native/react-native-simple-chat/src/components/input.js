@@ -47,24 +47,24 @@ const Input = forwardRef(
           <Container>
               <Label isFocused={isFocused}>{label}</Label>
               <StyledTextInput
-                  ref={ref}
-                  isFocused={isFocused}
-                  value={value}
-                  onChangeText={onChangeText}
-                  onSubmitEditing={onSubmitEditing}
-                  onFocus={() => setIsFocused(true)}
-                  onBlur={() =>{
+                  ref={ref}//Login에서 정의된 useRef 함수
+                  isFocused={isFocused}//포커스가 맞춰졌는지
+                  value={value}//호출한 쪽에서 넘어온 값
+                  onChangeText={onChangeText}// 호출한 쪽에서 넘어온 함수
+                  onSubmitEditing={onSubmitEditing}//호출한 쪽에서 넘어온 함수
+                  onFocus={() => setIsFocused(true)}//input에 포커스가 잡힐 때 실행
+                  onBlur={() =>{//input에 포커스가 안될 때 실행
                       setIsFocused(false);
-                      onBlur();
+                      onBlur();//PropType에 디폴트로 설정한 값이 실행
                   }}
                   placeholder={placeholder}
                   secureTextEntry={isPassword}
-                  returnKeyType={returnKeyType}
-                  maxLength={maxLength}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  textContentType="none"
-                  underlineColorAndroid="transparent"
+                  returnKeyType={returnKeyType}//키보드의 완료버튼의 표시
+                  maxLength={maxLength}//input에 쓸 수 있는 최대 길이
+                  autoCapitalize="none"//첫글자 대문자 안나오게
+                  autoCorrect={false}//단어 추천기능 안뜨게
+                  textContentType="none"//ios에서만 사용하는 옵션,옵션에 따라 뜨는 키보드가 달라진다.
+                  underlineColorAndroid="transparent"//컴포넌트의 밑줄 색상을 설정할 때 사용
               />
   
       </Container>
