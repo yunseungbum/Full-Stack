@@ -70,7 +70,7 @@ const Image = ({ url, imageStyle, rounded, showButton, onChangeImage }) => {
         quality: 1,
       });
 
-      if (!result.canceled) {
+      if (!result.cancelled) {
         onChangeImage(result.assets[0].uri);
       }
     } catch (e) {

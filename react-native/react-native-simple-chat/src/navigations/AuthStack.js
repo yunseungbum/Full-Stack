@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../screens/Login';
-import Signup from '../screens/Signup';
+import  {Login, Signup }from '../screens/index';
+
+
 
 const Stack = createStackNavigator();
 
@@ -11,21 +12,21 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Login"
-      screenOptions={{ 
+      screenOptions={{
         headerTitleAlign: 'center',
         cardStyle: { backgroundColor: theme.background },
-        headerTintColor : theme.headerTintColor,
+        headerTintColor: theme.headerTintColor,
       }}
     >
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{headerShown : false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Signup"
         component={Signup}
-        options={{headerBackTitleVisible:false}}
+        options={{ headerBackTitleVisible: false }}
       />
     </Stack.Navigator>
   );

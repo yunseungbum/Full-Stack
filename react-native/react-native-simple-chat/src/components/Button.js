@@ -11,7 +11,7 @@ const Container = styled.TouchableOpacity`
   border-radius: 4px;
   width: 100%;
   padding: 10px;
-  opacity : ${({disabled}) => (disabled ? 0.5 : 1)};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 const Title = styled.Text`
   height: 30px;
@@ -21,15 +21,13 @@ const Title = styled.Text`
     isFilled ? theme.buttonTitle : theme.buttonUnfilledTitle};
 `;
 
-//props로 넘겨받은 isFilled값에 따라서 버튼 내부를 채우거나 투명하게 처리하는 버튼
-const Button = ({ containerStyle, title, onPress, isFilled,disabled}) => {
-
+const Button = ({ containerStyle, title, onPress, isFilled, disabled }) => {
   return (
     <Container
       style={containerStyle}
       onPress={onPress}
       isFilled={isFilled}
-      disabled={disabled}//활성화 여부를 결정
+      disabled={disabled}
     >
       <Title isFilled={isFilled}>{title}</Title>
     </Container>
@@ -45,7 +43,7 @@ Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func.isRequired,
   isFilled: PropTypes.bool,
-  disabled : PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default Button;

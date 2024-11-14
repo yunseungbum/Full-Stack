@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-simple-chat",
-    "slug": "react-native-simple-chat",
+    "name": "simple-chat",
+    "slug": "simple-chat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
