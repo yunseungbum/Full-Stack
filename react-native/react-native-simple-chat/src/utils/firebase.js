@@ -76,7 +76,9 @@ export const createChannel = async ({ title, description }) => {
   return id;
 };
 
-// Create message in Firestore
+// Firestore 메세지 생성
+
+
 export const createMessage = async ({ channelId, message }) => {
   const docRef = doc(db, `channels/${channelId}/messages`, message._id);
   await setDoc(docRef, { ...message, createdAt: Date.now() });
