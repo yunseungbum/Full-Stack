@@ -1,0 +1,9 @@
+기술스택
+language : java
+front : html,css,react(Axios,fetch)
+backend : springboot
+db: Oracle,H2,MySQL ,FireStore
+cloud : AWS,firevase
+build-tool: gradle
+moblie : react-native
+ORM:JPA
