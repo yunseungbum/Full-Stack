@@ -12,16 +12,27 @@
       "backgroundColor": "#3679fe"
     },
     "ios": {
+      "bundleIdentifier": "com.yunseungbum.rnsimplechat",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yunseungbum.rnsimplechat",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "19b991d3-f565-4d9f-8ed5-e24d3c31a11d"
+      }
+    },
+    "owner": "yunbum"
   }
 }

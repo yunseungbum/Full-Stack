@@ -5,6 +5,7 @@ import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import config from '../../firebase.json';
 
+
 // Firebase 앱 초기화
 export const app = initializeApp(config);
 

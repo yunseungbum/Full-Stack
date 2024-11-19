@@ -26,6 +26,7 @@ import com.example.demo.service.TodoService;
 public class TodoController {
 	
 	//TodoService 의존성 주입하기
+	//스프링부트에서 의존성 주입하는 이유 : 결합도를 낮추고,코드의 유연성,유지보수성,테스트 용이성을 향상시키기 위해
 	private final TodoService service;
 	
 	public TodoController(TodoService service) {
