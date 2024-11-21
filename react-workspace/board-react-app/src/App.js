@@ -1,11 +1,17 @@
-import React, {useState} from "react"
-import { BoardContext } from "./context/BoardContext"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import BoardList from "./pages/BoardList"
-import Write from "./pages/Write"
+import React, {useState} from "react";
+import { BoardContext } from "./context/BoardContext";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import BoardList from "./pages/BoardList";
+import Write from "./pages/Write";
+import WritePost from "./pages/WritePost";
+import PostDetail from "./pages/PostDetail";
+import EditPost from "./pages/EditPost";
 
-const App = () => {
-  const [boardList, setBoardList] = useState([
+
+const App =() =>{
+
+const [boardList, setBoardList] = useState(
+  [
     { id: 1, title: "첫 번째 게시글", author: "작성자1", writingTime: "2024-11-20 12:00", content: "첫 번째 게시글의 내용입니다." },
     { id: 2, title: "두 번째 게시글", author: "작성자2", writingTime: "2024-11-20 13:00", content: "두 번째 게시글의 내용입니다." },
     { id: 3, title: "세 번째 게시글", author: "작성자3", writingTime: "2024-11-20 14:00", content: "세 번째 게시글의 내용입니다." },
@@ -21,18 +27,23 @@ const App = () => {
     { id: 13, title: "열세 번째 게시글", author: "작성자13", writingTime: "2024-11-21 12:00", content: "열세 번째 게시글의 내용입니다." },
     { id: 14, title: "열네 번째 게시글", author: "작성자14", writingTime: "2024-11-21 13:00", content: "열네 번째 게시글의 내용입니다." },
     { id: 15, title: "열다섯 번째 게시글", author: "작성자15", writingTime: "2024-11-21 14:00", content: "열다섯 번째 게시글의 내용입니다." },
-  ]);
+  ]
+
+);
 
   return(
-    <BoardContext.Provider value={{boardList, setBoardList}}>
+    <BoardContext.Provider value={{boardList,setBoardList}}>
       <Router>
         <Routes>
-          <Route path="/" element={<BoardList />}/>
-          <Route path="/write" element={<Write />}/>
+          <Route path="/" element={<BoardList/>}/>
+          <Route path="/writepost" element={<WritePost/>}/>
+          <Route path="/postdetail/:id" element={<PostDetail/>}/>
+          <Route path="/editpost/:id" element={<EditPost/>}/>
         </Routes>
       </Router>
     </BoardContext.Provider>
   )
+
 }
 
 export default App;

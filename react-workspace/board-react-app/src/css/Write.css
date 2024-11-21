@@ -1,6 +1,6 @@
 /* 전체 컨테이너 */
 .write-container {
-     max-width: 600px;
+    max-width: 600px;
     margin: 50px auto; /* 화면 중앙에 배치 */
     padding: 20px;
     border: 1px solid #ddd;
@@ -10,7 +10,7 @@
     font-family: Arial, sans-serif;
     position: relative; /* 버튼 배치를 위한 기준 */
     min-height: 400px; /* 최소 높이 설정 */
-  
+    /* width: 100vw; */
 }
 
 /* 제목 스타일 */
