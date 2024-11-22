@@ -30,7 +30,7 @@ public class OrderService {
     }
     
     public List<ProductDTO> save(OrderDTO dto) {
-    	// 상품 존재 여부 확인
+    	// 상품 존재 확인 여부
     	Optional<ProductEntity> option = productRepository.findById(dto.getProductId());
     	ProductEntity productEntity;
     	if (option.isPresent()) {
