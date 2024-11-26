@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserService {
 	
-	@Autowired //스프링이 UserRepository 타입의 Bean을 자동으로 주입해준다.
+	@Autowired //스프링이 UserRepository 타입의 Bean 자동으로 주입해준다.
 	private UserRepository repository;
 	
 	//유저를 생성하려는 메서드(db에 저장)
