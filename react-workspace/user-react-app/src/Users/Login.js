@@ -14,7 +14,7 @@ const Login = () => {
         //DB에 넘겨서 아이디 비밀번호 검증받고 토큰을 받아서 로컬스토리지에 저장
         signin({userId : userId, pwd : pwd});
     }
-
+    //tosignup
     function toSignup(){
         window.location.href="/signup"
     }
